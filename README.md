@@ -1,3 +1,3 @@
 # pth3
 Test for studies
-modf
+test 2 ok
