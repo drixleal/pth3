@@ -7,9 +7,15 @@
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
+<<<<<<< HEAD
       "externalConsole": true,
       "cwd": ".",
       "program": "build/Debug/outDebug",
+=======
+      "externalConsole": false,
+      "cwd": "/home/drix/pth3/CODE/test_1",
+      "program": "/home/drix/pth3/CODE/test_1/build/Debug/outDebug",
+>>>>>>> aaaf691 (Update 18-07-25)
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
