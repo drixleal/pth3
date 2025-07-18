@@ -1,0 +1,62 @@
+!Automação da configuração do Switch 2
+enable
+
+!Configuração de Data/Hora em inglês, você pode usar abreviado ou completo
+clock set 18:41:00 18 July 2025
+
+  !Acessando o modo de configuração global de comandos
+  configure terminal
+
+    !Configuração do nome do switch
+    hostname sw-02
+
+    !Habilitando o serviço de criptografia de senhas do Tipo-7 Password 
+    service password-encryption
+
+    !Habilitando o serviço de marcação de Data/Hora detalhado nos Logs
+    service timestamps log datetime msec
+
+    !Habilitando o tamanho do Buffer dos Logs na Memória RAM
+    logging buffered 4096 
+
+    !Desativando a resolução de nomes de domínio
+    no ip domain-lookup
+
+    !Configuração do banner da mensagem do dia
+    banner motd #WARNING: Access authorized only to employees!#
+
+    !Habilitando o uso senha do Tipo-5 Secret para acessar o modo EXEC Privilegiado
+    enable secret Cisco@95
+
+    !Criação dos usuários locais utilizando senhas do Tipo-5 ou Tipo-7 e privilégios diferenciados
+    username drixmin privilege 15 secret Ti@telecom720
+    username drix secret Drix@leal360
+    username adriano password Xbox360@d
+
+    !Desativando os Serviços de Descobertas de equipamentos na rede
+    no cdp run
+    no lldp run
+
+    !Acessando a linha console, porta padrão de acesso Out-of-Band (Fora da Banda)
+    line console 0
+
+      !Forçando fazer login local utilizando usuário e senha locais do switch
+      login local
+
+      !Habilitando senha de acesso do Tipo-7 Password
+      password Teste@123
+
+      !Sincronizando as mensagens de logs na tela
+      logging synchronous
+
+      !Habilitando o tempo de inatividade de uso do console
+      exec-timeout 5 30
+
+      !Saindo de todos os níveis e voltando para o modo EXEC Privilegiado
+      end
+
+!Salvando as configurações da memória RAM para a memória NVRAM
+!OBSERVAÇÃO IMPORTANTE: deixar uma linha em branco no final do script para
+!salvar automaticamente o script na hora da execução, fazendo a função de
+!<Enter> no final do script.
+write
