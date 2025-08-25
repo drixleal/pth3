@@ -4,6 +4,7 @@ public class calculate
 
 {
 
+        @SuppressWarnings("UnusedAssignment")
 	public static void main(String[] args) 
 	
 	{
