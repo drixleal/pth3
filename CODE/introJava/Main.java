@@ -1,6 +1,6 @@
 
 import java.util.ArrayList;
-
+@SuppressWarnings("UnusedAssignment")
 public class Main
 
 {
@@ -37,6 +37,7 @@ public class Main
        
      //------------------------------------------------------
        //Declare Variables
+       @SuppressWarnings("UnusedAssignment")
        byte b = 127;
        short s = 32767;
        int i = 95;
@@ -72,6 +73,7 @@ public class Main
      
      */
     //------------------------------------------------------
+    @SuppressWarnings("UnusedAssignment")
      String[] cars = new String[5];
         cars[0] = "BMW";
         cars[1] = "Audi";
@@ -79,6 +81,7 @@ public class Main
         cars[3] = "Mazda";
 
      //------------------------------------------------------   
+     @SuppressWarnings("UnusedAssignment")
      ArrayList<String> names = new ArrayList<String>();
         names.add("Adrian");
         names.add("Drix");
