@@ -1,11 +1,8 @@
 //Created by @drixleal
-
+@SuppressWarnings("UnusedAssignment")
 public class calculate 
 
 {
-
-
-        @SuppressWarnings("UnusedAssignment")
 	public static void main(String[] args) 
 	
 	{
