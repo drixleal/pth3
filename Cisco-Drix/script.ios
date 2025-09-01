@@ -1,14 +1,14 @@
-!Automação da configuração do Switch 2
+!Automação da configuração do Switch 1
 enable
 
 !Configuração de Data/Hora em inglês, você pode usar abreviado ou completo
-clock set 18:41:00 18 July 2025
+clock set 18:20:00 1 September 2025
 
   !Acessando o modo de configuração global de comandos
   configure terminal
 
     !Configuração do nome do switch
-    hostname sw-02
+    hostname sw-01
 
     !Habilitando o serviço de criptografia de senhas do Tipo-7 Password 
     service password-encryption
@@ -23,7 +23,10 @@ clock set 18:41:00 18 July 2025
     no ip domain-lookup
 
     !Configuração do banner da mensagem do dia
-    banner motd #WARNING: Access authorized only to employees!#
+    banner motd @
+    WARNING: Access authorized only to employees!                                                                                                          
+    Don't enter this system!
+    @
 
     !Habilitando o uso senha do Tipo-5 Secret para acessar o modo EXEC Privilegiado
     enable secret Cisco@95
@@ -38,7 +41,7 @@ clock set 18:41:00 18 July 2025
     no lldp run
 
     !Acessando a linha console, porta padrão de acesso Out-of-Band (Fora da Banda)
-    line console 0
+    line console 0 5
 
       !Forçando fazer login local utilizando usuário e senha locais do switch
       login local
