@@ -41,7 +41,7 @@ clock set 18:20:00 1 September 2025
     no lldp run
 
     !Acessando a linha console, porta padrão de acesso Out-of-Band (Fora da Banda)
-    line console 0 5
+    line console 0
 
       !Forçando fazer login local utilizando usuário e senha locais do switch
       login local

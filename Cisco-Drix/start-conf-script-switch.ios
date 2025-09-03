@@ -1,0 +1,77 @@
+!SCRIPT PARA CONFIGURAR SWITCH
+!Habilita o modo de configuração privilegiada [switch#]
+enable
+
+!Configurar data e hora
+clock set 18:50:00 3 Sep 2025
+
+
+!Habilita o modo de configuração global [switch(config)#]
+configure terminal
+
+!Configurar fuso horário
+clock timezone UTC -3
+
+!Habilita criptografia Tipo 7 [password-type 7]
+service password-encryption
+
+!Configura o nome do switch
+hostname SW-DRIX-1
+
+!Configuração do banner da mensagem do dia
+banner motd @
+___________________________________________________________________
+
+####    #####  #  #     #
+#   #   #   #  #   #   #
+#    #  # #    #    ###
+#   #   #  #   #   #   #
+####    #   #  #  #     #
+---------------------------
+#####  #   |  #####  #####  #      #####    ###   ####   #      #
+  #    #   |    #    #      #      #      #      #    #  # #  # #
+  #    #   |    #    ###    #      ###    #      #    #  #  ##  #
+  #    #   |    #    #      #      #      #      #    #  #      #
+  # *  #   |    #    #####  #####  #####    ###   ####   #      #
+___________________________________________________________________
+
+________________________________________________
+WARNING: Access authorized only to employees!
+Don't enter this system!
+________________________________________________
+@
+
+!Configura a senha do modo privilegiado [secret-type 5]
+enable secret Xbox@95
+
+
+!---------------Usuários Locais---------------
+
+username adriano password Xbox360@d
+username drix  secret Drix@leal360
+username drixmin privilege 15 secret Ti@telecom720
+
+!---------------Configura a VTY---------------
+
+line vty 0 5
+!Nível de linha de configuração [SW-DRIX-1(config-line)#]
+login local
+password Cisco@95
+logging synchronous
+exec-timeout 5 30
+exit
+
+!---------------Configura o console---------------
+
+line console 0
+!Nível de linha de configuração [SW-DRIX-1(config-line)#]
+login local
+password Cisco@95
+logging synchronous
+exec-timeout 5 30
+end
+
+
+
+!Finaliza a configuração e salva
+write
