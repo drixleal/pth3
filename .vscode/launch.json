@@ -3,6 +3,13 @@
   "configurations": [
     {
         "type": "java",
+        "name": "Uno",
+        "request": "launch",
+        "mainClass": "Uno",
+        "projectName": "pth3_4e476eb1"
+    },
+    {
+        "type": "java",
         "name": "Main",
         "request": "launch",
         "mainClass": "Main",
