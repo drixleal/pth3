@@ -133,3 +133,116 @@ public class Main
 
     }
 }
+
+
+
+/*
+ package alunoEstacio;
+
+import java.util.Random;
+
+//Classe
+	public class Pessoa 
+	{    
+
+		//Atributos
+		private String nome;
+		private double codigo_identificador;
+		private Random aleatorio;  
+		
+		//Métodos
+			public Pessoa (String nome)
+			{
+				aleatorio = new Random();
+				this.setNome(nome);
+				this.codigo_identificador = aleatorio.nextDouble();
+			}
+			
+			private void setNome (String nome) 
+			{
+				this.nome = nome;
+			}  
+			
+			public String getNome () 
+			{
+				return this.nome;
+			}
+			
+			public double getCodigoIdentificador ()
+			{
+				return this.codigo_identificador;
+			}
+			
+			public static void main(String args[])
+			{
+				Pessoa p1 = new Pessoa("Teste A");
+				System.out.println("Pessoa 1: "+p1.getNome());
+			}
+			
+	}
+ */
+//----------------------------------------------------------------------------
+ /*
+  package alunoEstacio;
+
+// PRECISAMOS IMPORTAR AS FERRAMENTAS PARA CRIAR LISTAS!
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+public class Pessoa {
+
+    // A classe Pessoa continua exatamente a mesma. Nenhuma alteração aqui.
+    // --- Atributos ---
+    private String nome;
+    private int codigo_identificador;
+    private Random aleatorio;
+
+    // --- Construtor ---
+    public Pessoa(String nome) {
+        aleatorio = new Random();
+        this.setNome(nome);
+        this.codigo_identificador = aleatorio.nextInt(90000) + 10000;
+    }
+
+    // --- Métodos ---
+    private void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getNome() {
+        return this.nome;
+    }
+
+    public int getCodigoIdentificador() {
+        return this.codigo_identificador;
+    }
+
+    // --- Método Principal ---
+    // A MÁGICA ACONTECE AQUI!
+    public static void main(String args[]) {
+
+        // 1. Criamos uma lista vazia que vai guardar objetos do tipo Pessoa.
+        List<Pessoa> listaDePessoas = new ArrayList<>();
+
+        // 2. Adicionamos nossas pessoas à lista.
+        // Podemos adicionar quantas quisermos!
+        listaDePessoas.add(new Pessoa("Teste A"));
+        listaDePessoas.add(new Pessoa("Teste B"));
+        listaDePessoas.add(new Pessoa("Teste C")); // Adicionei um extra pra mostrar a vantagem!
+
+        // 3. Criamos o laço de repetição (loop "for").
+        // Ele vai executar o bloco de código para cada item da lista.
+        // O 'i' é um contador que começa em 0 e vai até o tamanho da lista.
+        for (int i = 0; i < listaDePessoas.size(); i++) {
+            
+            // Pegamos a pessoa da lista na posição atual do contador 'i'.
+            Pessoa pessoaAtual = listaDePessoas.get(i);
+            
+            // Montamos a string de saída.
+            // Usamos '(i + 1)' para que a contagem comece em "Pessoa 1" em vez de "Pessoa 0".
+            System.out.println("[Pessoa " + (i + 1) + "]nome: " + pessoaAtual.getNome() + ", Código Identificador: " + pessoaAtual.getCodigoIdentificador());
+        }
+    }
+}
+  */
