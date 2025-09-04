@@ -2,44 +2,44 @@
   "version": "0.2.0",
   "configurations": [
     {
-        "type": "java",
-        "name": "Uno",
-        "request": "launch",
-        "mainClass": "Uno",
-        "projectName": "pth3_4e476eb1"
+      "type": "java",
+      "name": "Uno",
+      "request": "launch",
+      "mainClass": "Uno",
+      "projectName": "pth3_4e476eb1"
     },
     {
-        "type": "java",
-        "name": "Main",
-        "request": "launch",
-        "mainClass": "Main",
-        "projectName": "pth3_28f89723"
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "Main",
+      "projectName": "pth3_28f89723"
     },
     {
-        "type": "java",
-        "name": "calculate",
-        "request": "launch",
-        "mainClass": "calculate",
-        "projectName": "pth3_28f89723"
+      "type": "java",
+      "name": "calculate",
+      "request": "launch",
+      "mainClass": "calculate",
+      "projectName": "pth3_28f89723"
     },
     {
-        "name": "C/C++ Runner: Debug Session",
-        "type": "cppdbg",
-        "request": "launch",
-        "args": [],
-        "stopAtEntry": false,
-        "externalConsole": true,
-        "cwd": "c:/Users/Adriano Leal/pth3/CODE/test_1",
-        "program": "c:/Users/Adriano Leal/pth3/CODE/test_1/build/Debug/outDebug",
-        "MIMode": "gdb",
-        "miDebuggerPath": "gdb",
-        "setupCommands": [
-            {
-                "description": "Enable pretty-printing for gdb",
-                "text": "-enable-pretty-printing",
-                "ignoreFailures": true
-            }
-        ]
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "cwd": "c:/Users/Adriano Leal/pth3/CODE/test_3",
+      "program": "c:/Users/Adriano Leal/pth3/CODE/test_3/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
     }
-]
+  ]
 }
