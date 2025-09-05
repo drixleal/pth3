@@ -1,18 +1,15 @@
 public class Conta 
-
 {
-	@SuppressWarnings({"override", "unused"})
-    //atributos
-	String cliente;
-	double saldo;
+	//atributos
+	protected String cliente;
+	protected double saldo;
 	//construtor
 	public Conta()
 	{
 		System.out.println("Ag 1279");
 	}
 	//métodos
-        @SuppressWarnings("unused")
-	void exibirSaldo()
+	protected void exibirSaldo()
 	{
 		System.out.println("Saldo: R$ " + saldo);
 	}
