@@ -8,6 +8,7 @@ public class Aviao extends Carro
 		
 	}
 
+        @SuppressWarnings("override")
 	void acelerar()
 	{
 		System.out.println("__________----------");
