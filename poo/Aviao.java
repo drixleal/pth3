@@ -8,4 +8,9 @@ public class Aviao extends Carro
 		
 	}
 
+	void acelerar()
+	{
+		System.out.println("__________----------");
+	}
+
 }

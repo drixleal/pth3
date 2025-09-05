@@ -11,6 +11,8 @@ public class Cessna
 		System.out.println("Ano: " + cessna.ano);
 		System.out.println("Cor: " + cessna.cor);
 		System.out.println("Envergadura: " + cessna.envergadura + "m");
+		cessna.ligar();
+		cessna.acelerar();
 		cessna.aterrizar();
 		cessna.desligar();
 
