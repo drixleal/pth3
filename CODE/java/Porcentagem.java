@@ -16,15 +16,15 @@ public class Porcentagem
 		System.out.println("Porcentagem (R. 3)");
 		System.out.println("\n--------------------------\n");
 		//-----------------------------------------------------------
-		System.out.println("Insira o nº da porcentagem: ");
+		System.out.print("Insira o nº da porcentagem: ");
 		x = keyboard.nextDouble();
-		System.out.println("Insira o nº para calcular: ");
+		System.out.print("Insira o nº para calcular: ");
 		y = keyboard.nextDouble();
 		//-----------------------------------------------------------
-		resultado = (x / 100) * y;
+		resultado = (x * y) / 100;  
 		//-----------------------------------------------------------
 		System.out.println("Resultado");
-		System.out.println(formatador.format(x) + "% de " + formatador.format(y) + " = " + formatador.format(resultado));
+		System.out.println(x + "% de " + y + " = " + formatador.format(resultado));
 		//-----------------------------------------------------------
 		keyboard.close();
 		System.out.println("\n--------Powered by--------");
