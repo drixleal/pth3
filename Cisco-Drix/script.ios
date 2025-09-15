@@ -111,4 +111,62 @@ end
 
 copy run start
 
+!Insira o comando enable e, em seguida, digite o comando dir nvram para observar o conteúdo da NVRAM.
+!Use o comando show vlan .
+!Insira o comando show run. Revise a saída para documentar as seguintes informações, que você precisará configurar manualmente em um switch após um desastre.
+!ping 192.168.75.2
+!MDF-1#copy flash tftp
+!Source filename []? vlan.dat
+!Address or name of remote host []? 192.168.75.2
+!Destination filename [vlan.dat]? MDF-1_vlan.dat
+
+!MDF-1#copy startup-config tftp
+!Address or name of remote host []? 192.168.75.2
+!Destination filename [MDF-1-confg]? MDF-1_startup-config
+!Insira o comando copy flash tftp e especifique vlan.dat como o nome do arquivo de origem. Você documentou o endereço 192.168.75.2 na etapa anterior. Insira MDF-1_vlan.dat para o nome do arquivo de destino.
+
+configure terminal
+
+interface range f0/1 - 23, g0/1 - 2
+
+shutdown
+
+exit
+
+
+
+vlan 99
+
+nome Admin
+
+exit
+
+interface vlan 99
+
+ip address 192.168.99.253 255.255.255.0
+
+exit
+
+ip default-gateway 192.168.99.1
+
+Interface fa0/1
+
+switchport mode access
+
+switchport access vlan 75
+
+no shutdown
+
+interface g0/1
+
+switchport mode trunk
+
+switchport trunk native vlan 99
+
+no shutdown
+
+end
+
+
+
 !
