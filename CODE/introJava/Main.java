@@ -1,5 +1,4 @@
 
-import java.util.ArrayList;
 @SuppressWarnings("UnusedAssignment")
 public class Main
 
@@ -37,23 +36,23 @@ public class Main
        
      //------------------------------------------------------
        //Declare Variables
-       @SuppressWarnings("UnusedAssignment")
-       byte b = 127;
-       short s = 32767;
-       int i = 95;
-       long l = 9223372036854775807L;
-       float f = 3.4028235E38F;
-       double d = 1.7976931348623157E308;
-       char c = 'A';
-       boolean bool = false;
-       String str = "Adrian";
+       @SuppressWarnings({"UnusedAssignment", "unused"})
+       byte b = 127;@SuppressWarnings({"UnusedAssignment", "unused"})
+       short s = 32767;@SuppressWarnings({"UnusedAssignment", "unused"})
+       int i = 95;@SuppressWarnings({"UnusedAssignment", "unused"})
+       long l = 9223372036854775807L;@SuppressWarnings({"UnusedAssignment", "unused"})
+       float f = 3.4028235E38F;@SuppressWarnings({"UnusedAssignment", "unused"})
+       double d = 1.7976931348623157E308;@SuppressWarnings({"UnusedAssignment", "unused"})
+       char c = 'A';@SuppressWarnings({"UnusedAssignment", "unused"})
+       boolean bool = false;@SuppressWarnings({"UnusedAssignment", "unused"})
+       String str = "Adrian"; 
      //------------------------------------------------------
      /** 
      //Vectors Collections
         int[] integralNumb = {10, 20, 30, 40, 50};
 
 
-     //Insert Conditional
+     //Insert Conditional 
         if(b == 127)
         {
             System.out.println("It's ok");
@@ -73,20 +72,20 @@ public class Main
      
      */
     //------------------------------------------------------
-    @SuppressWarnings("UnusedAssignment")
+    /*@SuppressWarnings({"UnusedAssignment", "unused"})
      String[] cars = new String[5];
         cars[0] = "BMW";
         cars[1] = "Audi";
         cars[2] = "Volvo";
-        cars[3] = "Mazda";
+        cars[3] = "Mazda";*/
 
      //------------------------------------------------------   
-     @SuppressWarnings("UnusedAssignment")
+     /*@SuppressWarnings({"UnusedAssignment", "unused"})
      ArrayList<String> names = new ArrayList<String>();
         names.add("Adrian");
         names.add("Drix");
         names.add("Leal");
-        names.add("Java");
+        names.add("Java");*/
 
      //------------------------------------------------------
      /*System.out.println(names.get(0));
