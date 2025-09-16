@@ -1,5 +1,4 @@
 
-import java.util.ArrayList;
 @SuppressWarnings("UnusedAssignment")
 public class Main
 
@@ -73,20 +72,20 @@ public class Main
      
      */
     //------------------------------------------------------
-    @SuppressWarnings({"UnusedAssignment", "unused"})
+    /*@SuppressWarnings({"UnusedAssignment", "unused"})
      String[] cars = new String[5];
         cars[0] = "BMW";
         cars[1] = "Audi";
         cars[2] = "Volvo";
-        cars[3] = "Mazda";
+        cars[3] = "Mazda";*/
 
      //------------------------------------------------------   
-     @SuppressWarnings("UnusedAssignment")
+     /*@SuppressWarnings({"UnusedAssignment", "unused"})
      ArrayList<String> names = new ArrayList<String>();
         names.add("Adrian");
         names.add("Drix");
         names.add("Leal");
-        names.add("Java");
+        names.add("Java");*/
 
      //------------------------------------------------------
      /*System.out.println(names.get(0));
