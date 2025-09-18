@@ -7,7 +7,9 @@ public class Estacio1
     
     //Atributos
     private String nome;
+    @SuppressWarnings("FieldMayBeFinal")
     private double codigo_identificador;
+    @SuppressWarnings("FieldMayBeFinal")
     private Random aleatorio;   
     //Métodos
     public Estacio1 (String nome){
