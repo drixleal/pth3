@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adriano Leal | Web Developer Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="profile-name">Adriano Leal</div>
+
+      <nav class="navigation-bar">
+        <ul>
+          <li><a href="#about-me">About Me</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#recommendations">Recommendations</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="about-me" class="about-me">
+        <div class="about-me-content">
+          <p>
+            I am a passionate web developer with experience in creating dynamic
+            and user-friendly websites...
+          </p>
+          <div>
+            <img
+              src="images/profile_picture.png"
+              alt="Profile Picture"
+              class="profile-picture"
+            />
+            <h1>Hi, I'm Adriano Leal!</h1>
+            <p>
+              I am a passionate web developer with experience in creating
+              dynamic and user-friendly websites. I am proficient in HTML, CSS,
+              and JavaScript, and I am always eager to learn new technologies.
+              My goal is to build applications that are both beautiful and
+              functional.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="skills">
+        <h2>Skills</h2>
+        <div class="skill-cards">
+          <div class="skill-card">
+            <img src="images/html_logo.png" alt="HTML" />
+            <p>HTML</p>
+          </div>
+          <div class="skill-card">
+            <img src="images/css_logo.png" alt="CSS" />
+            <p>CSS</p>
+          </div>
+          <div class="skill-card">
+            <img src="images/js_logo.png" alt="JavaScript" />
+            <p>JavaScript</p>
+          </div>
+          <div class="skill-card">
+            <img src="images/java_logo.png" alt="Java" />
+            <p>Java</p>
+          </div>
+          <div class="skill-card">
+            <img src="images/python_logo.png" alt="Python" />
+            <p>Python</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="projects">
+        <h2>Projects</h2>
+        <div class="project-cards">
+          <div class="project-card">
+            <h3>Project 1: E-commerce Website</h3>
+            <p>
+              Developed a front-end for a fictional online store. Features
+              include a product catalog, shopping cart, and a responsive design
+              that works on all devices.
+            </p>
+          </div>
+          <div class="project-card">
+            <h3>Project 2: Task Manager App</h3>
+            <p>
+              A simple to-do list application built with JavaScript. Users can
+              add, delete, and mark tasks as complete. All data is stored
+              locally in the browser.
+            </p>
+          </div>
+          <div class="project-card">
+            <h3>Project 3: Personal Blog</h3>
+            <p>
+              Created a personal blog template using HTML and CSS Grid. It's
+              fully responsive and includes a clean, minimalist design for
+              readability.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="recommendations" class="recommendations">
+        <h2>Recommendations</h2>
+        <div class="recommendation-cards">
+          <div class="recommendation-card">
+            <p>
+              "Adriano Leal is a very dedicated professional. The project was
+              delivered on time and with exceptional quality. I would definitely
+              work with them again!"
+            </p>
+            <span>- Jane Doe, Project Manager</span>
+          </div>
+          <div class="recommendation-card">
+            <p>
+              "An excellent developer with a great eye for detail. They
+              transformed our initial idea into a functional and beautiful
+              website."
+            </p>
+            <span>- John Smith, CEO of Tech Solutions</span>
+          </div>
+          <div class="recommendation-card">
+            <p>
+              "Working with Adriano Leal was a great experience. They are
+              proactive, a great team player, and highly skilled in front-end
+              development."
+            </p>
+            <span>- Emily White, Lead Designer</span>
+          </div>
+        </div>
+
+        <div class="recommendation-form">
+          <h3>Leave a Recommendation</h3>
+          <input
+            type="text"
+            id="recommender-name"
+            placeholder="Your Name (Optional)"
+          />
+          <textarea
+            id="recommendation-text"
+            placeholder="Your recommendation here..."
+          ></textarea>
+          <button onclick="addRecommendation()">Submit</button>
+        </div>
+      </section>
+    </main>
+
+    <a href="#" class="home-icon">
+      <img src="images/home_icon.png" alt="Home" />
+    </a>
+
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <span class="close-button" onclick="closePopup()">&times;</span>
+        <p>Thank you for leaving a recommendation!</p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
