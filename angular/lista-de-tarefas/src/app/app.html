@@ -1,0 +1,5 @@
+<h1>My To-Do List</h1>
+
+<app-task-form (addTask)="handleAddTask($event)"></app-task-form>
+
+<app-task-list [taskList]="tasks" (deleteTask)="handleDeleteTask($event)"> </app-task-list>

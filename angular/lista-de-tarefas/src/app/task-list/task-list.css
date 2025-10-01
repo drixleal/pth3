@@ -1,0 +1,68 @@
+.task-list-container {
+  max-width: 500px;
+  margin: 20px auto; /* Centraliza a lista na página */
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+.task-list {
+  list-style-type: none; /* Remove os marcadores padrão da lista */
+  padding: 0;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between; /* Empurra o texto e o botão para as extremidades */
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.task-item:last-child {
+  border-bottom: none; /* Remove a borda do último item */
+}
+
+/* Estilo para tarefas concluídas */
+.task-item.completed span,
+.task-item.completed .task-label {
+  /* Adicionado .task-label para garantir */
+  text-decoration: line-through;
+  color: #888;
+}
+
+.delete-button {
+  background-color: #dc3545; /* Um vermelho padrão para ações de deletar */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+/* Adjustments for the task item layout */
+.task-item {
+  gap: 15px; /* Adds space between checkbox, label, and button */
+  justify-content: flex-start; /* Aligns items to the start */
+}
+
+.task-checkbox {
+  /* Makes the checkbox a bit larger and easier to click */
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.task-label {
+  flex-grow: 1; /* Allows the label to take up all available space */
+  cursor: pointer;
+}

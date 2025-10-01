@@ -1,0 +1,47 @@
+/* Global Styles */
+body {
+  font-family: 'Tahoma', sans-serif;
+}
+
+/* =================================== */
+/* Responsive Styles              */
+/* =================================== */
+
+/* This will apply to screens 600px wide or smaller (most phones) */
+@media (max-width: 600px) {
+  /* Reduce the main title size on small screens */
+  h1 {
+    font-size: 2em;
+    text-align: center;
+  }
+
+  /* Stack the form elements vertically */
+  .task-form-container {
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto; /* Center the form */
+  }
+
+  * Make the input and button take up the full width of the form */ .task-input,
+  .add-button {
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding doesn't add to the width */
+  }
+
+  /* Ensure the task list container fits on the screen */
+  .task-list-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  /* Improve layout of task items on small screens */
+  .task-item {
+    gap: 10px;
+  }
+
+  .task-label {
+    /* Allow text to wrap if it's too long */
+    word-break: break-word;
+  }
+}

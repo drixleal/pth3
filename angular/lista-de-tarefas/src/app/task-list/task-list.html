@@ -1,0 +1,25 @@
+<div class="task-list-container">
+  <h2>Tasks</h2>
+  <ul class="task-list">
+    <li
+      *ngFor="let task of taskList; let i = index"
+      class="task-item"
+      [class.completed]="task.completed"
+    >
+      <input
+        type="checkbox"
+        class="task-checkbox"
+        [checked]="task.completed"
+        (change)="toggleTaskCompletion(task)"
+        id="task-{{ i }}"
+      />
+      <label for="task-{{ i }}" class="task-label">{{ task.text }}</label>
+
+      <button class="delete-button" (click)="onDeleteTask(task); $event.stopPropagation()">
+        Delete
+      </button>
+    </li>
+
+    <li *ngIf="taskList.length === 0" class="empty-list-message">No tasks yet. Add one above!</li>
+  </ul>
+</div>

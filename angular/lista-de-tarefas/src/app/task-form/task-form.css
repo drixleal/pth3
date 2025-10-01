@@ -1,0 +1,29 @@
+.task-form-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  gap: 10px; /* Adiciona um espaço entre o input e o botão */
+}
+
+.task-input {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  width: 300px; /* Largura do campo de texto */
+}
+
+.add-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #1900d6; /* Um azul bonito */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer; /* Muda o cursor para uma mãozinha ao passar o mouse */
+  transition: background-color 0.3s; /* Efeito suave na cor */
+}
+
+.add-button:hover {
+  background-color: #1300a1; /* Um azul um pouco mais escuro */
+}

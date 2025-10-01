@@ -1,0 +1,12 @@
+<div class="task-form-container">
+  <form (ngSubmit)="onAddTask()">
+    <input
+      type="text"
+      class="task-input"
+      placeholder="What needs to be done?"
+      [(ngModel)]="newTask"
+      name="task"
+    />
+    <button type="submit" class="add-button">Add</button>
+  </form>
+</div>
