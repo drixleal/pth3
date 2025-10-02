@@ -1,43 +1,349 @@
-Phase 1: Setting Up the Development Environment
 
+# Lista de Tarefas Angular — Documentação do Projeto
 
-Check Node.js Version: We first checked your system's current Node.js version by running the command node -v.
+## Sumário
+1. [Configuração do Ambiente](#configuracao-do-ambiente)
+2. [Criação do Projeto Angular](#criacao-do-projeto-angular)
+3. [Execução e Testes Locais](#execucao-e-testes-locais)
+4. [Estrutura dos Arquivos e Código](#estrutura-dos-arquivos-e-codigo)
+5. [Dicas e Solução de Problemas](#dicas-e-solucao-de-problemas)
+6. [Próximos Passos](#proximos-passos)
 
-Update Node.js: We discovered that the installed version (v18.16.1) was outdated and did not meet the minimum requirements for the latest Angular CLI.
+---
 
-Action: You successfully updated Node.js by downloading and running the LTS (Long-Term Support) installer from the official website (nodejs.org).
+## 1. <a name="configuracao-do-ambiente"></a>Configuração do Ambiente
 
-Verification: We confirmed the update was successful by running node -v again in a new terminal, which showed a compatible version (v22.20.0).
+**Verificar versão do Node.js:**
+```sh
+node -v
+```
+Se necessário, atualize para a versão LTS mais recente em [nodejs.org](https://nodejs.org/).
 
-Install Angular CLI: With Node.js and NPM up to date, we installed the Angular Command Line Interface (CLI) globally using the command:
-
+**Instalar Angular CLI:**
+```sh
 npm install -g @angular/cli
+```
 
+---
 
-Phase 2: Creating the Angular Project
+## 2. <a name="criacao-do-projeto-angular"></a>Criação do Projeto Angular
 
-Create the Project: We used the Angular CLI to generate the new project structure and files.
+**Criar o projeto:**
+```sh
+ng new lista-de-tarefas
+```
+Responda às perguntas:
+- Add Angular routing? **No**
+- Stylesheet format? **CSS**
+- Enable Server-Side Rendering (SSR)? **No**
+- Create a 'zoneless' application? **No**
+- Configure AI tools? **None**
 
-Command: ng new lista-de-tarefas
+---
 
-During this process, you answered a series of configuration prompts:
+## 3. <a name="execucao-e-testes-locais"></a>Execução e Testes Locais
 
-Add Angular routing? No
+**Rodar o servidor de desenvolvimento:**
+```sh
+cd lista-de-tarefas
+ng serve -o
+```
 
-Stylesheet format? CSS
+**Acessar via rede local (testar no celular):**
+```sh
+ng serve --host 0.0.0.0 -o
+```
 
-Enable Server-Side Rendering (SSR)? No
+---
 
-Create a 'zoneless' application? No
+## 4. <a name="estrutura-dos-arquivos-e-codigo"></a>Estrutura dos Arquivos e Código
 
-Configure AI tools? None
+### 4.1. src/app/task.ts
+Define a estrutura de uma tarefa:
+```typescript
+export interface Task {
+  text: string;
+  completed: boolean;
+}
+```
 
+### 4.2. src/styles.css
+Estilos globais e responsividade:
+```css
+body {
+  font-family: 'Tahoma', sans-serif;
+}
+@media (max-width: 600px) {
+  h1 { font-size: 2em; text-align: center; }
+  .task-list-container { width: 90%; padding: 15px; }
+  .task-item { gap: 10px; }
+  .task-label { word-break: break-word; }
+}
+```
 
-Phase 3: Running the Application
+### 4.3. src/main.ts
+Inicialização da aplicação:
+```typescript
+import { bootstrapApplication } from '@angular/platform-browser';
+import { appConfig } from './app/app.config';
+import { AppComponent } from './app/app';
+bootstrapApplication(AppComponent, appConfig)
+  .catch((err) => console.error(err));
+```
 
-Run the Development Server: After the project was created, we navigated into its directory (cd lista-de-tarefas) and started the local development server.
+### 4.4. src/app/app.ts (AppComponent)
+Gerencia a lista de tarefas e comunicação entre componentes:
+```typescript
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { TaskForm } from './task-form/task-form';
+import { TaskList } from './task-list/task-list';
+import { Task } from './task';
 
-Command: ng serve -o
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule, TaskForm, TaskList],
+  templateUrl: './app.html',
+  styleUrl: './app.css'
+})
+export class AppComponent {
+  tasks: Task[] = [
+    { text: 'My first example task', completed: false },
+    { text: 'My second (completed) task', completed: true }
+  ];
+  showMessage: boolean = true;
+  handleAddTask(newTaskText: string) {
+    const newTask: Task = { text: newTaskText, completed: false };
+    this.tasks.unshift(newTask);
+  }
+  handleDeleteTask(taskToDelete: Task) {
+    this.tasks = this.tasks.filter(task => task !== taskToDelete);
+  }
+  toggleMessage(): void {
+    this.showMessage = !this.showMessage;
+  }
+}
+```
+
+### 4.5. src/app/app.html
+Template principal:
+```html
+<h1>My To-Do List</h1>
+<div class="card welcome-card">
+  <button (click)="toggleMessage()">Toggle Welcome Message</button>
+  <p *ngIf="showMessage">Welcome to your interactive To-Do List application!</p>
+</div>
+<hr> <app-task-form (addTask)="handleAddTask($event)"></app-task-form>
+<app-task-list [taskList]="tasks" (deleteTask)="handleDeleteTask($event)"></app-task-list>
+```
+
+### 4.6. src/app/app.css
+Estilos para a seção de boas-vindas:
+```css
+.welcome-card {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.welcome-card p {
+  margin-top: 15px;
+  font-size: 1.1em;
+  color: #333;
+}
+.welcome-card button {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.welcome-card button:hover {
+  background-color: #5a6268;
+}
+hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 30px 0;
+}
+```
+
+### 4.7. src/app/task-form/task-form.ts
+Lógica do formulário de nova tarefa:
+```typescript
+import { Component, EventEmitter, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+@Component({
+  selector: 'app-task-form',
+  standalone: true,
+  imports: [FormsModule],
+  templateUrl: './task-form.html',
+  styleUrl: './task-form.css'
+})
+export class TaskForm {
+  newTask: string = '';
+  @Output() addTask = new EventEmitter<string>();
+  onAddTask() {
+    if (this.newTask.trim()) {
+      this.addTask.emit(this.newTask);
+      this.newTask = '';
+    }
+  }
+}
+```
+
+### 4.8. src/app/task-form/task-form.html
+Campo de texto e botão "Add":
+```html
+<div class="task-form-container">
+  <form (ngSubmit)="onAddTask()">
+    <input type="text" class="task-input" placeholder="What needs to be done?" [(ngModel)]="newTask" name="task">
+    <button type="submit" class="add-button">Add</button>
+  </form>
+</div>
+```
+
+### 4.9. src/app/task-form/task-form.css
+Estilos do formulário:
+```css
+.task-form-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  gap: 10px;
+}
+.task-input {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  width: 300px;
+}
+.add-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #1900d6;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.add-button:hover {
+  background-color: #1300a1;
+}
+@media (max-width: 600px) {
+  .task-form-container { flex-direction: column; width: 100%; }
+  .task-input, .add-button { width: 100%; box-sizing: border-box; }
+}
+```
+
+### 4.10. src/app/task-list/task-list.ts
+Lógica da lista de tarefas:
+```typescript
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Task } from '../task';
+@Component({
+  selector: 'app-task-list',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './task-list.html',
+  styleUrl: './task-list.css'
+})
+export class TaskList {
+  @Input() taskList: Task[] = [];
+  @Output() deleteTask = new EventEmitter<Task>();
+  toggleTaskCompletion(task: Task) {
+    task.completed = !task.completed;
+  }
+  onDeleteTask(taskToDelete: Task) {
+    this.deleteTask.emit(taskToDelete);
+  }
+}
+```
+
+### 4.11. src/app/task-list/task-list.html
+Renderização da lista de tarefas:
+```html
+<div class="task-list-container">
+  <h2>Tasks</h2>
+  <ul class="task-list">
+    <li *ngFor="let task of taskList; let i = index" class="task-item" [class.completed]="task.completed">
+      <input type="checkbox" class="task-checkbox" [checked]="task.completed" (change)="toggleTaskCompletion(task)" id="task-{{i}}">
+      <label for="task-{{i}}" class="task-label">{{ task.text }}</label>
+      <button class="delete-button" (click)="onDeleteTask(task); $event.stopPropagation()">Delete</button>
+    </li>
+    <li *ngIf="taskList.length === 0" class="empty-list-message">No tasks yet. Add one above!</li>
+  </ul>
+</div>
+```
+
+### 4.12. src/app/task-list/task-list.css
+Estilos da lista de tarefas:
+```css
+.task-list-container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+h2 { text-align: center; color: #333; }
+.task-list { list-style-type: none; padding: 0; }
+.task-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  gap: 15px;
+}
+.task-item:last-child { border-bottom: none; }
+.task-item.completed .task-label { text-decoration: line-through; color: #888; }
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: auto;
+}
+.delete-button:hover { background-color: #c82333; }
+.task-checkbox { width: 20px; height: 20px; cursor: pointer; }
+.task-label { flex-grow: 1; cursor: pointer; }
+.empty-list-message { text-align: center; color: #888; padding: 20px; }
+```
+
+---
+
+## 5. <a name="dicas-e-solucao-de-problemas"></a>Dicas e Solução de Problemas
+
+- Se o comando `ng serve` não abrir o navegador automaticamente, acesse manualmente: http://localhost:4200
+- Para erros de porta ocupada, use outro número: `ng serve --port 4300`
+- Se houver problemas de permissão, execute o terminal como administrador.
+- Para instalar dependências novamente: `npm install`
+
+---
+
+## 6. <a name="proximos-passos"></a>Próximos Passos
+
+- Adicionar autenticação de usuário
+- Persistir tarefas em backend ou localStorage
+- Melhorar layout e responsividade
+- Consultar a [documentação oficial Angular](https://angular.io/docs)
+
+---
+
+**Projeto desenvolvido por: Drix Leal**
 
 Enable Local Network Access: To test the application on your mobile phone, we needed to make the server accessible on your local network. We stopped the server and restarted it with a specific host flag.
 
