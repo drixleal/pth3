@@ -1,0 +1,468 @@
+Phase 1: Setting Up the Development Environment
+
+
+Check Node.js Version: We first checked your system's current Node.js version by running the command node -v.
+
+Update Node.js: We discovered that the installed version (v18.16.1) was outdated and did not meet the minimum requirements for the latest Angular CLI.
+
+Action: You successfully updated Node.js by downloading and running the LTS (Long-Term Support) installer from the official website (nodejs.org).
+
+Verification: We confirmed the update was successful by running node -v again in a new terminal, which showed a compatible version (v22.20.0).
+
+Install Angular CLI: With Node.js and NPM up to date, we installed the Angular Command Line Interface (CLI) globally using the command:
+
+npm install -g @angular/cli
+
+
+Phase 2: Creating the Angular Project
+
+Create the Project: We used the Angular CLI to generate the new project structure and files.
+
+Command: ng new lista-de-tarefas
+
+During this process, you answered a series of configuration prompts:
+
+Add Angular routing? No
+
+Stylesheet format? CSS
+
+Enable Server-Side Rendering (SSR)? No
+
+Create a 'zoneless' application? No
+
+Configure AI tools? None
+
+
+Phase 3: Running the Application
+
+Run the Development Server: After the project was created, we navigated into its directory (cd lista-de-tarefas) and started the local development server.
+
+Command: ng serve -o
+
+Enable Local Network Access: To test the application on your mobile phone, we needed to make the server accessible on your local network. We stopped the server and restarted it with a specific host flag.
+
+Command: ng serve --host 0.0.0.0 -o
+
+
+
+
+
+Documentação Final do Projeto: Lista de Tarefas (Angular)
+
+1. src/app/task.ts
+(Arquivo novo que criamos para definir a estrutura de uma tarefa)
+
+TypeScript
+
+// This defines the structure for a single task object
+export interface Task {
+  text: string;
+  completed: boolean;
+}
+
+
+2. src/styles.css
+(Arquivo de estilos globais, onde definimos a fonte e a responsividade)
+
+CSS
+
+/* You can add global styles to this file, and also import other style files */
+
+/* Global Styles */
+body {
+  font-family: 'Tahoma', sans-serif;
+}
+
+/* =================================== */
+/* Responsive Styles              */
+/* =================================== */
+
+/* This will apply to screens 600px wide or smaller (most phones) */
+@media (max-width: 600px) {
+
+  /* Reduce the main title size on small screens */
+  h1 {
+    font-size: 2em;
+    text-align: center;
+  }
+
+  /* Ensure the task list container fits on the screen */
+  .task-list-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  /* Improve layout of task items on small screens */
+  .task-item {
+    gap: 10px;
+  }
+
+  .task-label {
+    /* Allow text to wrap if it's too long */
+    word-break: break-word;
+  }
+}
+
+
+3. src/main.ts
+(Arquivo de inicialização da aplicação, onde corrigimos o nome do componente principal)
+
+TypeScript
+
+import { bootstrapApplication } from '@angular/platform-browser';
+import { appConfig } from './app/app.config';
+import { AppComponent } from './app/app';
+
+bootstrapApplication(AppComponent, appConfig)
+  .catch((err) => console.error(err));
+
+
+4. src/app/app.ts (AppComponent - Lógica Principal)
+(O "cérebro" da aplicação, que gerencia a lista de tarefas e a comunicação entre os componentes)
+
+TypeScript
+
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { TaskForm } from './task-form/task-form';
+import { TaskList } from './task-list/task-list';
+import { Task } from './task';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule, TaskForm, TaskList],
+  templateUrl: './app.html',
+  styleUrl: './app.css'
+})
+export class AppComponent {
+  // Main list of tasks for the application
+  tasks: Task[] = [
+    { text: 'My first example task', completed: false },
+    { text: 'My second (completed) task', completed: true }
+  ];
+
+  // Property to control the visibility of the welcome message
+  showMessage: boolean = true;
+
+  // Receives the new task text and creates a new Task object
+  handleAddTask(newTaskText: string) {
+    const newTask: Task = {
+      text: newTaskText,
+      completed: false // New tasks always start as not completed
+    };
+    this.tasks.unshift(newTask);
+  }
+
+  // Receives a task to delete and filters it out of the main array
+  handleDeleteTask(taskToDelete: Task) {
+    this.tasks = this.tasks.filter(task => task !== taskToDelete);
+  }
+
+  // Toggles the value of showMessage
+  toggleMessage(): void {
+    this.showMessage = !this.showMessage;
+  }
+}
+
+
+5. src/app/app.html (AppComponent - Template Principal)
+(A estrutura HTML principal que organiza e exibe os outros componentes)
+
+HTML
+
+<h1>My To-Do List</h1>
+
+<div class="card welcome-card">
+  <button (click)="toggleMessage()">Toggle Welcome Message</button>
+
+  <p *ngIf="showMessage">Welcome to your interactive To-Do List application!</p>
+</div>
+
+<hr> <app-task-form (addTask)="handleAddTask($event)"></app-task-form>
+
+<app-task-list
+  [taskList]="tasks"
+  (deleteTask)="handleDeleteTask($event)">
+</app-task-list>
+
+
+6. src/app/app.css (AppComponent - Estilos)
+(Estilos específicos para a seção de boas-vindas)
+
+CSS
+
+/* Styling for the new welcome card section */
+.welcome-card {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Styling for the welcome message paragraph */
+.welcome-card p {
+  margin-top: 15px;
+  font-size: 1.1em;
+  color: #333;
+}
+
+/* Styling for the new button */
+.welcome-card button {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #6c757d; /* Gray for differentiation */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.welcome-card button:hover {
+  background-color: #5a6268;
+}
+
+/* Styling for the horizontal rule separator */
+hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 30px 0;
+}
+
+
+7. src/app/task-form/task-form.ts (TaskForm - Lógica)
+(Componente responsável por capturar a nova tarefa e emitir um evento)
+
+TypeScript
+
+import { Component, EventEmitter, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-task-form',
+  standalone: true,
+  imports: [FormsModule],
+  templateUrl: './task-form.html',
+  styleUrl: './task-form.css'
+})
+export class TaskForm {
+  // This will hold the text from the input field
+  newTask: string = '';
+
+  // This creates a custom event named 'addTask'
+  @Output() addTask = new EventEmitter<string>();
+
+  // This function is called when the form is submitted
+  onAddTask() {
+    // Check if the input is not empty
+    if (this.newTask.trim()) {
+      // Emit the custom event, sending the new task's text
+      this.addTask.emit(this.newTask);
+      // Clear the input field
+      this.newTask = '';
+    }
+  }
+}
+
+
+8. src/app/task-form/task-form.html (TaskForm - Template)
+(O HTML com o campo de texto e o botão "Add")
+
+HTML
+
+<div class="task-form-container">
+  <form (ngSubmit)="onAddTask()">
+    <input type="text" class="task-input" placeholder="What needs to be done?" [(ngModel)]="newTask" name="task">
+    <button type="submit" class="add-button">Add</button>
+  </form>
+</div>
+
+
+9. src/app/task-form/task-form.css (TaskForm - Estilos)
+(Onde definimos a aparência do formulário, incluindo o layout responsivo)
+
+CSS
+
+/* Default styles for the form (desktop first) */
+.task-form-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  gap: 10px; /* Adds space between the input and the button */
+}
+
+.task-input {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  width: 300px; /* Default width for desktop */
+}
+
+.add-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #1900d6; /* Your blue color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-button:hover {
+  background-color: #1300a1;
+}
+
+/* Responsive Styles for the form on small screens */
+@media (max-width: 600px) {
+  .task-form-container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .task-input, .add-button {
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding is included in the width */
+  }
+}
+
+
+10. src/app/task-list/task-list.ts (TaskList - Lógica)
+(Componente que recebe a lista de tarefas e lida com a lógica de completar e deletar)
+
+TypeScript
+
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Task } from '../task';
+
+@Component({
+  selector: 'app-task-list',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './task-list.html',
+  styleUrl: './task-list.css'
+})
+export class TaskList {
+  // Receives the task list from the parent component
+  @Input() taskList: Task[] = [];
+  // Creates a custom event named 'deleteTask'
+  @Output() deleteTask = new EventEmitter<Task>();
+
+  // Toggles the 'completed' property of a task
+  toggleTaskCompletion(task: Task) {
+    task.completed = !task.completed;
+  }
+
+  // Emits the deleteTask event, sending the specific task to be deleted
+  onDeleteTask(taskToDelete: Task) {
+    this.deleteTask.emit(taskToDelete);
+  }
+}
+
+
+11. src/app/task-list/task-list.html (TaskList - Template)
+(O HTML que renderiza a lista de tarefas, com checkboxes e botões "Delete")
+
+HTML
+
+<div class="task-list-container">
+  <h2>Tasks</h2>
+  <ul class="task-list">
+    <li *ngFor="let task of taskList; let i = index"
+        class="task-item"
+        [class.completed]="task.completed">
+
+      <input type="checkbox"
+             class="task-checkbox"
+             [checked]="task.completed"
+             (change)="toggleTaskCompletion(task)"
+             id="task-{{i}}">
+
+      <label for="task-{{i}}" class="task-label">{{ task.text }}</label>
+
+      <button class="delete-button" (click)="onDeleteTask(task); $event.stopPropagation()">Delete</button>
+    </li>
+
+    <li *ngIf="taskList.length === 0" class="empty-list-message">
+      No tasks yet. Add one above!
+    </li>
+  </ul>
+</div>
+12. src/app/task-list/task-list.css (TaskList - Estilos)
+(Os estilos para a lista de tarefas, itens, checkboxes e botões)
+
+CSS
+
+.task-list-container {
+  max-width: 500px;
+  margin: 20px auto; /* Center the list on the page */
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+.task-list {
+  list-style-type: none; /* Remove default bullet points */
+  padding: 0;
+}
+
+.task-item {
+  display: flex;
+  justify-content: flex-start; /* Aligns items to the start */
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  gap: 15px; /* Adds space between items */
+}
+
+.task-item:last-child {
+  border-bottom: none; /* Remove border from the last item */
+}
+
+/* Style for completed tasks */
+.task-item.completed .task-label {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.delete-button {
+  background-color: #dc3545; /* A standard red for delete actions */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: auto; /* Pushes the delete button to the far right */
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+.task-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.task-label {
+  flex-grow: 1; /* Allows the label to take up all available space */
+  cursor: pointer;
+}
+
+.empty-list-message {
+  text-align: center;
+  color: #888;
+  padding: 20px;
+}
