@@ -134,18 +134,10 @@ public class calculate
 		
 		switch (opt)
 		{
-		case 1:
-			System.out.println("Customers");
-			break;
-		case 2:
-			System.out.println("User");
-			break;
-		case 3:
-			System.out.println("Reports");
-			break;
-		default:
-			System.out.println("Invalid Option");
-			break;
+		case 1 -> System.out.println("Customers");
+		case 2 -> System.out.println("User");
+		case 3 -> System.out.println("Reports");
+		default -> System.out.println("Invalid Option");
 		}
 		
 //--------------------------------------------------------------

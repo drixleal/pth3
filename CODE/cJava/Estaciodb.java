@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 public class Estaciodb {
 
+    @SuppressWarnings("CallToPrintStackTrace")
     public static void main(String[] args) {
         
         // --- DADOS DA CONEXÃO ---
