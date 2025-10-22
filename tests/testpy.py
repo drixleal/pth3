@@ -9,7 +9,7 @@ print(f'O segundo elemento da lista é {segundo_elemento}')
 lista.append(60)
 print(f'Lista após adicionar 60: {lista}')
 
-lista.insert( _index: 2, _object: 25)
+lista.insert(2, 25) 
 print(f'Lista após inserir 25 na posição 2: {lista}')
 
 lista.remove(40)
