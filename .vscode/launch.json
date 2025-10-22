@@ -5,6 +5,13 @@
       "type": "java",
       "name": "Testjava",
       "request": "launch",
+      "mainClass": "tests.Testjava",
+      "projectName": "pth3_28f89723"
+    },
+    {
+      "type": "java",
+      "name": "Testjava",
+      "request": "launch",
       "mainClass": "CODE.test_1.Testjava",
       "projectName": "pth3_28f89723"
     },

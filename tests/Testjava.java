@@ -1,4 +1,4 @@
-//package tests;
+package tests;
 
 import java.util.ArrayList;  // Para usar listas dinâmicas
 import java.util.Arrays;    // Para ajudar a criar a lista inicial
