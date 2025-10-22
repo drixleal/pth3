@@ -1,34 +1,30 @@
-def read_name():
-	"""Lê o nome do usuário garantindo que não seja vazio."""
-	name = input("Digite seu nome: ").strip()
-	while not name:
-		print("Nome não pode ser vazio.")
-		name = input("Digite seu nome: ").strip()
-	return name
+lista = [10, 20, 30, 40, 50]
 
+primeiro_elemento = lista[0]
+segundo_elemento = lista[1]
 
-def read_age():
-	"""Lê a idade do usuário e valida que seja um inteiro não-negativo."""
-	while True:
-		s = input("Digite sua idade: ").strip()
-		if not s:
-			print("Idade não pode ser vazia.")
-			continue
-		try:
-			age = int(s)
-			if age < 0:
-				print("Idade não pode ser negativa.")
-				continue
-			return age
-		except ValueError:
-			print("Por favor, insira um número inteiro para a idade.")
+print(f'O primeiro elemento da lista é {primeiro_elemento}')
+print(f'O segundo elemento da lista é {segundo_elemento}')
 
+lista.append(60)
+print(f'Lista após adicionar 60: {lista}')
 
-def main():
-	name = read_name()
-	age = read_age()
-	print(f"Olá, {name}! Você tem {age} anos.")
+lista.insert( _index: 2, _object: 25)
+print(f'Lista após inserir 25 na posição 2: {lista}')
 
+lista.remove(40)
+print(f'Lista após remover 40: {lista}')
 
-if __name__ == "__main__":
-	main()
+ultimo_elemento = lista.pop()
+print(f'Elemento removido: {ultimo_elemento}')
+print(f'Lista após remover o último elemento: {lista}')
+
+sub_lista = lista[1:4]
+print(f'Sub-lista (elementos de índice 1 a 3): {sub_lista}')
+
+lista.sort()
+print(f'Lista ordenada: {lista}')
+
+print('Iterando sobre a lista: ')
+for elemento in lista:
+    print(elemento)
