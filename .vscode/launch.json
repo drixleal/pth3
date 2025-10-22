@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "ValidaCpf",
+      "request": "launch",
+      "mainClass": "tests.ValidaCpf",
+      "projectName": "pth3_28f89723"
+    },
+    {
+      "type": "java",
       "name": "Testjava",
       "request": "launch",
       "mainClass": "tests.Testjava",
