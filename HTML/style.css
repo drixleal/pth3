@@ -29,6 +29,56 @@ body {
   z-index: 1000;
 }
 
+/* CPF top validator styling */
+.cpf-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cpf-top input {
+  padding: 6px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.cpf-top button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cpf-top .cpf-clear {
+  background: transparent;
+  color: #ff4d4d;
+  font-weight: bold;
+  padding: 4px 8px;
+  border: 1px solid rgba(255, 77, 77, 0.15);
+  border-radius: 4px;
+  margin-right: 6px;
+}
+
+/* hide clear button by default; show when input has text */
+.cpf-top .cpf-clear {
+  display: none;
+}
+.cpf-top .cpf-clear.visible {
+  display: inline-block;
+}
+
+.cpf-top .cpf-clear:hover {
+  background: rgba(255, 77, 77, 0.08);
+}
+
+.cpf-top #cpf-result {
+  margin-left: 10px;
+  font-weight: bold;
+  color: #fff;
+}
+
 .profile-name {
   font-size: 1.8em;
   font-weight: bold;
@@ -300,6 +350,15 @@ h2 {
   .recommendation-cards {
     flex-direction: column;
     align-items: center; /* Centraliza os cartões */
+  }
+
+  /* Ajusta o validador de CPF no topo para telas pequenas */
+  .cpf-top {
+    width: 100%;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 10px;
+    flex-wrap: wrap;
   }
 
   /* Garante que os cartões não sejam muito largos para a tela */

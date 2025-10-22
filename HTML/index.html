@@ -18,6 +18,20 @@
           <li><a href="#recommendations">Recommendations</a></li>
         </ul>
       </nav>
+      <!-- CPF validator moved to header for top placement -->
+      <div class="cpf-top">
+        <button
+          id="cpf-clear-btn"
+          class="cpf-clear"
+          title="Limpar"
+          aria-label="Limpar"
+        >
+          ✖
+        </button>
+        <input type="text" id="cpf-input" placeholder="Digite o CPF" />
+        <button id="cpf-validate-btn" class="cpf-validate">Validar</button>
+        <div id="cpf-result" aria-live="polite"></div>
+      </div>
     </header>
 
     <main>
@@ -143,6 +157,8 @@
           ></textarea>
           <button onclick="addRecommendation()">Submit</button>
         </div>
+
+        <!-- CPF Validator (moved to header) -->
       </section>
     </main>
 
