@@ -1,19 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-	<meta charset="utf-8">
-	<title>Incorporação de JS em Páginas HTML</title>
-</head>
-<body>
-	<!-- Códigos HTML -->
+  <head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="script.js"></script>
+    <title>Incorporação de JS em Páginas HTML</title>
+  </head>
+  <body>
+    <!-- Códigos HTML -->
+    <a href="https://www.linkedin.com/in/drix-leal-ti/">Visite o LinkedIn</a>
+    <a href="javascript:void(0)" onclick="alerta('Segue ai K_ray!');"
+      >Segue noix!</a
+    >
 
+    <!-- Fim dos Códigos HTML -->
 
-	<!-- Fim dos Códigos HTML -->
-	
-	<!-- Incorporação do JS externo -->
-	<script type="text/javascript" src="script.js"></script>
-</body>
+    <!-- Incorporação do JS externo -->
+    <script type="text/javascript">
+      const alerta = (texto) => {
+        alert(texto);
+      };
+      alerta("Segue o Drix!");
+    </script>
+  </body>
 </html>
-
-
-
