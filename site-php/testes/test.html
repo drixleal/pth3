@@ -1,12 +1,64 @@
 <!DOCTYPE html>
-<html>
-<body>
-  <p id="Tejota"></p>
-  <script>
-     const tjProcesso = {ID:"2022.1", envolvidos:
-     ["João", "Maria"]};
-     document.getElementById("Tejota").innerHTML
-     = tjProcesso.envolvidos[0];
-  </script>
-</body>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Custom Page</title>
+    <!--SIMULADOR DE CSS-->
+    <style>
+      #text-container {
+        color: white;
+        font-size: 16px;
+        font-family: tahoma;
+        font-style: italic;
+        background: rgba(35, 35, 113, 0.9); /*rgb(35, 35, 113)*/
+        width: 450px;
+        margin: 0 left;
+        padding: 10px;
+      }
+      .texto-destaque {
+        color: yellow;
+        font-weight: bold;
+      }
+      .bkg {
+        background-color: darkgray;
+        background-image: url("wall3.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: right;
+      }
+      dl dt {
+        margin-bottom: 8px;
+        /*display: inline;*/
+      }
+      dl dd {
+        margin-bottom: 15px;
+      }
+    </style>
+    <!--FIM SIMULADOR DE CSS-->
+  </head>
+  <body class="bkg">
+    <div id="text-container">
+      <h1>Drix T.I/Telecom Page</h1>
+      <p class="texto-destaque">My Services!</p>
+      <dl>
+        <dt>* Cisco</dt>
+        <dd>
+          Advanced Routing and Switching
+          <a
+            href="https://www.linkedin.com/in/drix-leal-ti/details/certifications/626264826/multiple-media-viewer?profileId=ACoAADyt5sUBdKNY_zf-zZoLari_pFEE7-31uXw&treasuryMediaId=1759415616771&type=IMAGE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BcOaS8kKpS6iVkZBNfgsIXQ%3D%3D"
+          >
+            Jobs</a
+          >
+        </dd>
+        <dt>* Fortinet</dt>
+        <dd>Firewall and SASE</dd>
+        <dt>* Mikrotik</dt>
+        <dd>ISP Routing</dd>
+        <dt>* Ubiquiti</dt>
+        <dd>Wireless and Network Solutions</dd>
+      </dl>
+    </div>
+  </body>
 </html>

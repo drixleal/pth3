@@ -53,5 +53,19 @@
   "C_Cpp_Runner.showCompilationTime": false,
   "C_Cpp_Runner.useLinkTimeOptimization": false,
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
-  "cSpell.words": ["Drix", "Endereço", "Formulários", "Gerais", "Nascimento"]
+  "cSpell.words": [
+    "destaque",
+    "Drix",
+    "Endereço",
+    "Formulários",
+    "Gerais",
+    "Mikrotik",
+    "Mundo",
+    "Nascimento",
+    "Página",
+    "SIMULADOR",
+    "texto",
+    "Título",
+    "Ubiquiti"
+  ]
 }
