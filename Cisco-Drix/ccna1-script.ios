@@ -1,0 +1,77 @@
+!Configurar o nome do dispositivo
+!modo EXECUTIVO privilegiado
+enable
+!modo de configuração global
+configure terminal
+!Definindo o nome do equipamento
+hostname Equpo1
+!Configurar a senha do modo EXECUTIVO privilegiado
+enable secret senha_forte
+!proteger o modo EXECUTIVO usuáriorio
+line console 0
+password senha_forte
+login
+!Configurar o tempo limite do console para 5 minutos
+exec-timeout 5 0
+!Proteger o acesso remoto via Telnet/SSH
+line vty 0 4
+password senha_forte
+login
+transport input ssh telnet
+!Proteger todas as senhas do arquivo de configuração
+exit
+service password-encryption
+!Apresentar a notificação legal ao acessar o dispositivo
+banner motd @ WARNING: Access authorized only to employees!                                                                                                          
+Don't enter this system! @
+!Salvar a configuração
+end
+copy running-config startup-config
+
+!Configurando interface de roteador
+configure terminal
+!Acessar a interface GigabitEthernet 0/0/x
+interface GigabitEthernet 0/0/0
+description Conexao_para_Rede_A
+ip address 192.168.10.1 255.255.255.0
+ipv6 address 2001:db8:acad:10::1/64
+no shutdown
+exit
+interface GigabitEthernet 0/0/1
+description Conexao_para_Rede_B
+ip address 209.165.200.225 255.255.255.252
+ipv6 address 2001:db8:feed:224::1/64
+no shutdown
+exit
+!Verificar a configuração da interface
+show ip interface brief
+
+
+
+
+!Comandos de Verificação de Configuração
+
+show ip interface brief
+show ipv6 interface brief
+!A saída deve mostrar o status das interfaces e os endereços IP atribuídos.
+
+show ip route
+show ipv6 route
+!Exibe o conteúdo das tabelas de roteamento armazenadas na RAM
+
+show interfaces
+!Exibe estatísticas do IPv4 para todas as interfaces em um roteador.
+
+show ipv6 interface
+!Exibe estatísticas do IPv6 para todas as interfaces em um roteador.
+
+!Switch Layer 2 - Configuração Básica
+
+service password-encryption
+hostname S1
+interface Vlan1
+ip address 192.168.10.5 255.255.255.0
+ip default-gateway 192.168.10.1
+no shutdown
+end
+write memory
